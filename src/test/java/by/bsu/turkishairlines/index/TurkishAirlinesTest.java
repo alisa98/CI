@@ -1,16 +1,17 @@
 package by.bsu.turkishairlines.index;
 
 import java.time.LocalDate;
+import java.util.concurrent.TimeUnit;
 
+import by.bsu.turkishairlines.page.IndexPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
-import by.bsu.turkishairlines.page.IndexPage;
 
 public class TurkishAirlinesTest {
     private WebDriver driver;
@@ -105,12 +106,14 @@ public class TurkishAirlinesTest {
 
     @BeforeClass
     public void setupTest() {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
         ChromeOptions options = new ChromeOptions();
         options.addArguments(
-                "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36");
+                "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) " +
+                        "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36");
         options.addArguments("--start-maximized");
         driver = new ChromeDriver(options);
+//        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     }
 
     @AfterClass

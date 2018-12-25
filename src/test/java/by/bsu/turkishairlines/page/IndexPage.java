@@ -85,11 +85,11 @@ public class IndexPage {
     }
 
     public void setDestination(String code, String airport) {
-        new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOf(destinationButton));
+        new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(destinationButton));
         destinationButton.click();
-        new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOf(destinationInput));
+        new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(destinationInput));
         destinationInput.sendKeys(code);
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(
+        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(
                 driver.findElement(By.xpath("//*[@id='destinationSelector']/div/div/div/ul/li[2]/a"))));
         driver.findElement(By.xpath("//*[@id='destinationSelector']/div/div/div/ul/li[2]/a")).click();
     }
@@ -119,7 +119,7 @@ public class IndexPage {
     public void removeAdults(int number) {
         for (int i = 0; i < number; i++) {
             removeAdultButton.click();
-            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         }
     }
 
@@ -129,26 +129,26 @@ public class IndexPage {
                 openPasangersChoice();
             }
             addAdultButton.click();
-            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         }
     }
 
     public void addInfants(int number) {
         for (int i = 0; i < number; i++) {
             addInfantButton.click();
-            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         }
     }
 
     public void addChilds(int number) {
         for (int i = 0; i < number; i++) {
             addChildButton.click();
-            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         }
     }
 
     public void openPasangersChoice() {
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(personChoice));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOf(personChoice));
         personChoice.click();
     }
 
